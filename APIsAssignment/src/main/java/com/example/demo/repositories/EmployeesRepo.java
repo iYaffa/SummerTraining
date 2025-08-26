@@ -42,6 +42,7 @@ public class EmployeesRepo {
         for (Employee employee : emplist) {
             if (employee.getId() == id) {
                 emplist.remove(employee);
+                empMap.remove(id);
                 break;
             }
         }

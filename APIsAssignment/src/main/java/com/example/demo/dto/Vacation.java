@@ -1,4 +1,4 @@
-package com.example.demo.repositories;
+package com.example.demo.dto;
 
 public class Vacation {
 
