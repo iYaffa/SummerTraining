@@ -82,4 +82,17 @@ public class EmployeesRepo {
         return list;
     }
 
+    public void updateEmp(int id, Employee emp) {
+        for (Employee employee : emplist) {
+            if (employee.getId() == id) {
+                employee.setName(emp.getName());
+                employee.setSalary(emp.getSalary());
+                employee.setDepartment(emp.getDepartment());
+
+                break;
+            }
+        }
+
+    }
+
 }
