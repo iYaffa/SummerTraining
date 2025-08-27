@@ -44,8 +44,7 @@ public class EmployeeController {
     }
 
     @PutMapping("/employees/{id}")
-    public Employee putMethodName(@PathVariable int id, @RequestBody Employee emp) {
+    public void putMethodName(@PathVariable int id, @RequestBody Employee emp) {
         empRepo.updateEmp(id, emp);
-        return emp;
     }
 }

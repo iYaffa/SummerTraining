@@ -1,7 +1,7 @@
 package com.example.demo.dto;
 
 public class Vacation {
-
+    private static int count;
     private int vacationId;
     private int employeeId;
     private String startDate;
@@ -9,11 +9,13 @@ public class Vacation {
     private String status;
 
     public Vacation(int vacationId, int employeeId, String startDate, String endDate, String status) {
-        this.vacationId = vacationId;
+        count++;
+        this.vacationId = count
         this.employeeId = employeeId;
         this.startDate = startDate;
         this.endDate = endDate;
         this.status = status;
+
     }
 
     public int getVacationId() {
