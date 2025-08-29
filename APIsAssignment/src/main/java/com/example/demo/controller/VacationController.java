@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.Exceptions.EmployeeNotFoundException;
 import com.example.demo.dto.Vacation;
 import com.example.demo.repositories.VacationsRepo;
 
@@ -19,7 +20,7 @@ public class VacationController {
     static VacationsRepo vacationsRepo = new VacationsRepo(EmployeeController.empRepo);
 
     @GetMapping("/{empId}")
-    public ArrayList<Vacation> getAllVacations(@PathVariable int empId) {
+    public ArrayList<Vacation> getAllVacations(@PathVariable int empId) throws EmployeeNotFoundException {
         return vacationsRepo.getAllVacations(empId);
     }
 

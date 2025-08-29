@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
+import com.example.demo.Exceptions.EmployeeNotFoundException;
 import com.example.demo.dto.Employee;
 import com.example.demo.dto.Vacation;
 
@@ -59,16 +60,18 @@ public class VacationsRepo {
         return map;
     }
 
-    public ArrayList<Vacation> getAllVacations(int id) {
-        return new ArrayList<>(vacationsMap.get(id).values());
-
+    public ArrayList<Vacation> getAllVacations(int id) throws EmployeeNotFoundException {
+        if (vacationsMap.get(id) != null)
+            return new ArrayList<>(vacationsMap.get(id).values());
+        else
+            throw new EmployeeNotFoundException(id + "");
     }
 
-    public void addNewVacation(int id, Vacation vac) throws Exception {
+    public void addNewVacation(int id, Vacation vac) throws EmployeeNotFoundException {
         if (vacationsMap.get(id) != null)
             vacationsMap.get(id).put(vac.getVacationId(), vac);
         else
-            throw new Exception("Employee id not found!");
+            throw new EmployeeNotFoundException(id + "");
     }
 
     public void removeVacation(int id) {
