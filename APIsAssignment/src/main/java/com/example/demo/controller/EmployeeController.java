@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.Exceptions.EmployeeNotFoundException;
 import com.example.demo.dto.Employee;
 import com.example.demo.repositories.EmployeesRepo;
 
@@ -26,11 +27,11 @@ public class EmployeeController {
     }
 
     @GetMapping("/{id}")
-    public Employee getEmp(@PathVariable int id) {
+    public Employee getEmp(@PathVariable int id) throws EmployeeNotFoundException {
         return empRepo.findById(id);
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     public void addEmp(@RequestBody Employee employee) {
 
         empRepo.addEmp(employee);

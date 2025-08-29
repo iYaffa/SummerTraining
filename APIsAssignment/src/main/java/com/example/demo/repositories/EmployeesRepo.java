@@ -3,6 +3,7 @@ package com.example.demo.repositories;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.example.demo.Exceptions.EmployeeNotFoundException;
 import com.example.demo.dto.Employee;
 
 public class EmployeesRepo {
@@ -29,8 +30,11 @@ public class EmployeesRepo {
         return emplist;
     }
 
-    public Employee findById(int id) {
-        return empMap.get(id);
+    public Employee findById(int id) throws EmployeeNotFoundException {
+        if (empMap.get(id) != null)
+            return empMap.get(id);
+        else
+            throw new EmployeeNotFoundException(id + "");
 
     }
 

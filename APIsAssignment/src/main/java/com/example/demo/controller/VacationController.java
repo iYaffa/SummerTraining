@@ -24,7 +24,7 @@ public class VacationController {
         return vacationsRepo.getAllVacations(empId);
     }
 
-    @GetMapping(value = "/{empId}/{id}", produces = { MediaType.APPLICATION_JSON_VALUE,
+    @GetMapping(path = "/{empId}/{id}", produces = { MediaType.APPLICATION_JSON_VALUE,
             MediaType.APPLICATION_XML_VALUE })
 
     public Vacation getById(@PathVariable int empId, @PathVariable int id) {
@@ -33,9 +33,10 @@ public class VacationController {
     }
 
     @PostMapping("/{empId}")
-    public void addNewVac(@RequestBody Vacation vac, @PathVariable int id) throws Exception {
-
-        vacationsRepo.addNewVacation(id, vac);
+    public Vacation addNewVac(@RequestBody Vacation vac, @PathVariable int empId) throws EmployeeNotFoundException {
+        vac.setEmployeeId(empId);
+        vacationsRepo.addNewVacation(empId, vac);
+        return vac;
 
     }
 
