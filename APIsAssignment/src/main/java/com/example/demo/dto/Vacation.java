@@ -1,5 +1,9 @@
 package com.example.demo.dto;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
+@JacksonXmlRootElement(localName = "Vacation")
+
 public class Vacation {
     private static int count;
     private int vacationId;
@@ -8,9 +12,9 @@ public class Vacation {
     private String endDate;
     private String status;
 
-    public Vacation(int vacationId, int employeeId, String startDate, String endDate, String status) {
+    public Vacation(int employeeId, String startDate, String endDate, String status) {
         count++;
-        this.vacationId = count
+        this.vacationId = count;
         this.employeeId = employeeId;
         this.startDate = startDate;
         this.endDate = endDate;

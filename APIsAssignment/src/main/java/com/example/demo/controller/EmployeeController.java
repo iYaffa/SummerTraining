@@ -15,36 +15,37 @@ import com.example.demo.dto.Employee;
 import com.example.demo.repositories.EmployeesRepo;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/employees")
 public class EmployeeController {
 
-    EmployeesRepo empRepo = new EmployeesRepo();
+    static EmployeesRepo empRepo = new EmployeesRepo();
 
-    @GetMapping("/employees")
+    @GetMapping("")
     public ArrayList<Employee> index() {
         return empRepo.getAllEmployees();
     }
 
-    @GetMapping("/employees/{id}")
+    @GetMapping("/{id}")
     public Employee getEmp(@PathVariable int id) {
         return empRepo.findById(id);
     }
 
-    @PostMapping("/employees")
+    @PostMapping("/")
     public void addEmp(@RequestBody Employee employee) {
 
         empRepo.addEmp(employee);
 
     }
 
-    @DeleteMapping("/employees/{id}")
+    @DeleteMapping("/{id}")
     public void removeEmp(@PathVariable int id) {
-
+        VacationController.removeEmpsVacations(id);
         empRepo.removeEmp(id);
     }
 
-    @PutMapping("/employees/{id}")
+    @PutMapping("/{id}")
     public void putMethodName(@PathVariable int id, @RequestBody Employee emp) {
         empRepo.updateEmp(id, emp);
     }
+
 }

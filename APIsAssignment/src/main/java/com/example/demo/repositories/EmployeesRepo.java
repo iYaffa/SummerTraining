@@ -48,6 +48,7 @@ public class EmployeesRepo {
         }
     }
 
+    // generates dummy data
     private ArrayList<Employee> fillList() {
 
         ArrayList<Employee> list = new ArrayList<>();
@@ -83,14 +84,10 @@ public class EmployeesRepo {
     }
 
     public void updateEmp(int id, Employee emp) {
-        for (Employee employee : emplist) {
-            if (employee.getId() == id) {
-                employee.setName(emp.getName());
-                employee.setSalary(emp.getSalary());
-                employee.setDepartment(emp.getDepartment());
-                break;
-            }
-        }
+        Employee employee = empMap.get(id);
+        employee.setName(emp.getName());
+        employee.setSalary(emp.getSalary());
+        employee.setDepartment(emp.getDepartment());
 
     }
 
