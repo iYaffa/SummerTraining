@@ -26,4 +26,4 @@ The steps of how this was done:
 
     a. ChatId is required for this step so you have to send it a /start message first to get the chatID, then the chatid is printed on the terminal console. 
 
-    b. to send a message, open postman and send a post request to: http://localhost:8080/send-message/{YOUR CHAT ID}/{THE MESSAGE YOU WANT TO SEND}
+    b. to send a message, open postman and send a post request to: http://localhost:8080/send-message/{CHAT_ID}/{THE_MESSAGE_YOU_WANT_TO_SEND}
