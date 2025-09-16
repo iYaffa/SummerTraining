@@ -1,8 +1,9 @@
 
 package com.example.telegram_api;
 
+import java.util.logging.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 import org.telegram.abilitybots.api.bot.AbilityBot;
 import org.telegram.abilitybots.api.objects.Ability;
@@ -24,11 +25,6 @@ public class SimpleBot extends AbilityBot {
         return silent;
     }
 
-    @Override
-    public long creatorId() {
-        return 1L; // Replace with your Telegram user ID if needed
-    }
-
     public Ability startBot() {
         return Ability
                 .builder()
@@ -39,9 +35,18 @@ public class SimpleBot extends AbilityBot {
                 .action(ctx -> {
                     SendMessage message = new SendMessage();
                     message.setChatId(ctx.chatId());
-                    message.setText("hello");
+                    message.setText("Hello, your chat id is: " + ctx.chatId()
+                            + " if you want to test the bot using url");
                     silent.execute(message);
+                    System.out.println("\n **************************************" + "CHAT ID IS " + ctx.chatId()
+                            + "\n **************************************");
                 })
                 .build();
+    }
+
+    @Override
+    public long creatorId() {
+        return 1L;
+
     }
 }
